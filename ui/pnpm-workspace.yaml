@@ -1,0 +1,4 @@
+packages:
+  - "vue2-build"
+  - "vue3-build"
+  - "vue2.7-build"
