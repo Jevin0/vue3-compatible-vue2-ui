@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean && run-s build:*",
     "build:2": "vue-demi-switch 2 vue2 && pnpm --filter vue2-build build",
-    "build:2.7": "vue-demi-switch 2.7 vue2 && pnpm --filter vue2.7-playground build",
+    "build:2.7": "vue-demi-switch 2.7 vue2 && pnpm --filter vue2.7-build build",
     "build:3": "vue-demi-switch 3 vue3 && pnpm --filter vue3-build build",
     "clean": "rimraf ./dist"
   },
