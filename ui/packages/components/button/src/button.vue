@@ -5,14 +5,12 @@
   </div>
 </template>
 
-<script>
-/* eslint-disable import/first */
-export default {
-  name: 'NButton'
-}
-</script>
 <script setup>
 import {ref, computed, onMounted} from 'vue-demi'
+
+defineOptions({
+  name: 'NButton'
+})
 
 
 const num = ref(0)

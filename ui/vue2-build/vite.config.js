@@ -5,7 +5,27 @@ import ScriptSetup from 'unplugin-vue2-script-setup/vite'
 import { baseBuildConfig } from '../vite.base.config'
 
 export const viteVue2Config = defineConfig({
-  plugins: [vue2(), ScriptSetup({})],
+  plugins: [
+    vue2(), 
+    ScriptSetup({}),
+    {
+      name: 'vite-plugin-vue2-define-options',
+      transform(src, id) {
+        const vueRE = /\.vue$/;
+        if (vueRE.test(id)) {
+          if (src.includes('defineOptions')) {
+            const defineOptionsRegex = /defineOptions\(([\s\S]*?)\);/;
+            const match = src.match(defineOptionsRegex);
+
+            if (match) {
+              const defineOptionsParams = match[1].trim();
+              return src.replace(defineOptionsRegex, '').replace(/const __sfc_main = {};/, `const __sfc_main = ${defineOptionsParams};`);
+            }
+          }
+        }
+      }
+    }
+  ],
   server: {
     port: 2000,
   },
